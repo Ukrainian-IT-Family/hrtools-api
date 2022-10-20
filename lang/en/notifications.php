@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'user_new_poll_title' => 'You have received the ":title" poll, please pass it!',
+    'hr_set_to_user' => 'You have been added to HR :fullname',
+    'update_hr_to_user' => 'Your НR :old has been changed to HR :fullname.',
+    'pass' => 'Pass',
+    'user_complete_poll_title' => 'Employee :fullname completed poll ":title"',
+    'poll_auto_complete_title' => 'poll ":title" has been completed',
+    'poll_complete_by_admin_title' => 'Poll ":title" has been completed by admin :name',
+    'vacation_request_accepted_title' => 'Your vacation request (:date) has been accepted!',
+    'vacation_request_accepted_text' => 'Vacation from :date_start to :date_end (excluded) has been accepted!',
+    'hospital_request_accepted_title' => 'Your hospital request (:date) has been accepted!',
+    'hospital_request_accepted_text' => 'Hospital from :date_start to :date_end (excluded) has been accepted!',
+    'vacation_request_canceled_title' => 'Your vacation request (:date) has been declined!',
+    'vacation_request_canceled_text' => 'Vacation from :date_start to :date_end (excluded) has been declined!',
+    'hospital_request_canceled_title' => 'Your hospital request (:date) has been declined!',
+    'hospital_request_canceled_text' => 'Hospital from :date_start to :date_end (excluded) has been declined!',
+    'vacation_request_by_hr_title' => 'You have received a vacation request from HR :fullname',
+    'hospital_request_by_hr_title' => 'You have received a hospital request from HR  :fullname',
+    'vacation_request_by_worker_title' => 'You have received a vacation request from employee :fullname',
+    'hospital_request_by_worker_title' => 'You have received a hospital request from employee :fullname',
+    'role_granted_for_1' => 'You have been granted administrator rights!',
+    'role_granted_for_2' => 'You have been granted access to the site',
+    'role_granted_for_3' => 'You have been granted HR-manager rights',
+    'role_changed' => 'Your role has been changed from ":old" to ":new".',
+    'thank_you_for_using_our_application' => 'Thank you for using our application!',
+];
