@@ -47,7 +47,7 @@ class UpdateRoleNotification extends Notification
                     ['old' => __('role.role_'.$this->oldRole), 'new' => __('role.role_'.$this->newRole)]
                 )
             )
-            ->action('Notification Action', env('APP_URL'))
+            ->action(__('notifications.follow_action'), env('APP_URL'))
             ->line(__('notifications.thank_you_for_using_our_application'));
     }
 

@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'follow' => 'Перейти',
+    'follow_action' => 'Перейти на сайт',
     'user_new_poll_title' => 'Вам надійшло опитування ":title", пройдіть його будь ласка!',
     'hr_set_to_user' => 'Вас додано до HR :fullname',
     'update_hr_to_user' => 'НR :old було змінено на HR :fullname.',

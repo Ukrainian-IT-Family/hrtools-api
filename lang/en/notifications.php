@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'follow' => 'Follow',
+    'follow_action' => 'Follow to the site',
     'user_new_poll_title' => 'You have received the ":title" poll, please pass it!',
     'hr_set_to_user' => 'You have been added to HR :fullname',
     'update_hr_to_user' => 'Your НR :old has been changed to HR :fullname.',

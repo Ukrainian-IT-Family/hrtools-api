@@ -44,7 +44,7 @@ class HospitalRequestCreatedByWorkerNotification extends Notification
     {
         return (new MailMessage)
             ->line(__('notifications.hospital_request_by_worker_title', ['fullname' => $this->user->getFullName()]))
-            ->line('Thank you for using our application!');
+            ->line(__('notifications.thank_you_for_using_our_application'));
     }
 
     /**
