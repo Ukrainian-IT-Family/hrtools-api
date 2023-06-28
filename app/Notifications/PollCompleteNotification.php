@@ -43,7 +43,7 @@ class PollCompleteNotification extends Notification
     {
         return (new MailMessage)
                     ->line(__('notifications.poll_auto_complete_title', ['title' => $this->poll->getTitle()]))
-                    ->action('Notification Action', HttpUrlHelper::removeDuplicates(env('APP_URL').'/poll/'))
+                    ->action(__('notifications.follow'), HttpUrlHelper::removeDuplicates(env('APP_URL').'/poll/'))
                     ->line(__('notifications.thank_you_for_using_our_application'));
     }
 

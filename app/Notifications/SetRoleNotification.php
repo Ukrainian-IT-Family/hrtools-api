@@ -41,7 +41,7 @@ class SetRoleNotification extends Notification
     {
         return (new MailMessage)
             ->line(__('notifications.role_granted_for_'.$this->roleId))
-            ->action('Notification Action', env('APP_URL'))
+            ->action(__('notifications.follow_action'), env('APP_URL'))
             ->line(__('notifications.thank_you_for_using_our_application'));
     }
 
