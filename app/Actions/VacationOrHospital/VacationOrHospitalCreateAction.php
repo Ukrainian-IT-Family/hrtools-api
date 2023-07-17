@@ -52,26 +52,18 @@ final class VacationOrHospitalCreateAction
             'user_id' => $user->getId(),
         ]);
 
-        if ($vacationOrHospital->getType() === VacationOrHospital::VACATION_ID) {
-            if ($user::isHR()) {
-                $admins = $this->userRepository->getAdmins();
-                Notification::send($admins, new VacationRequestCreatedByHRNotification($vacationOrHospital, $user));
-            } elseif ($user::isWorker()) {
-                Notification::send(
-                    $user->getManager(),
-                    new VacationRequestCreatedByWorkerNotification($vacationOrHospital, $user)
-                );
-            }
-        } elseif ($vacationOrHospital->getType() === VacationOrHospital::HOSPITAL_ID) {
-            if ($user::isHR()) {
-                $admins = $this->userRepository->getAdmins();
-                Notification::send($admins, new HospitalRequestCreatedByHRNotification($vacationOrHospital, $user));
-            } elseif ($user::isWorker()) {
-                Notification::send(
-                    $user->getManager(),
-                    new HospitalRequestCreatedByWorkerNotification($vacationOrHospital, $user)
-                );
-            }
+        $admins = $this->userRepository->getAdmins();
+        $manager = $user->getManager();
+        $type = $vacationOrHospital->getType();
+
+        if ($type === VacationOrHospital::VACATION_ID && $user::isHR() && !empty($admins)) {
+            Notification::send($admins, new VacationRequestCreatedByHRNotification($vacationOrHospital, $user));
+        } elseif ($type === VacationOrHospital::VACATION_ID && $user::isWorker() && $manager) {
+            Notification::send($manager, new VacationRequestCreatedByWorkerNotification($vacationOrHospital, $user));
+        } elseif ($type === VacationOrHospital::HOSPITAL_ID && $user::isHR() && !empty($admins)) {
+            Notification::send($admins, new HospitalRequestCreatedByHRNotification($vacationOrHospital, $user));
+        } elseif ($type === VacationOrHospital::HOSPITAL_ID && $user::isWorker() && $manager) {
+            Notification::send($manager, new HospitalRequestCreatedByWorkerNotification($vacationOrHospital, $user));
         }
 
         return new VacationOrHospitalResponse($vacationOrHospital);
