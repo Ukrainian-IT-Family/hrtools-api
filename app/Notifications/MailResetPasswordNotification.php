@@ -50,7 +50,7 @@ class MailResetPasswordNotification extends ResetPassword
                 ->line(__('passwords.notification_text'))
                 ->action(__('passwords.notification_action'), $url)
                 ->line(__('passwords.expired_in', ['minutes' => config('auth.passwords.users.expire')]))
-                ->line(__('if_you_did_not_request_password_reset'));
+                ->line(__('passwords.if_you_did_not_request_password_reset'));
     }
 
     /**
