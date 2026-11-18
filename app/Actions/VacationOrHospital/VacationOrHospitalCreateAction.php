@@ -31,7 +31,7 @@ final class VacationOrHospitalCreateAction
         $user = Auth::user();
         $dateStart = Carbon::parse($request->getDateStart());
         $dateEnd = Carbon::parse($request->getDateEnd());
-        $daysCount = $dateStart->diffInDays($dateEnd);
+        $daysCount = (int) $dateStart->diffInDays($dateEnd, absolute: true);
 
         if ((int) $request->isType() === VacationOrHospital::VACATION_ID) {
             $daysPending = ! is_null($user->getHireDate()) ? $this->pendingVacationsDaysAction->execute($user->getId(), $user->getHireDate()) : 0;

@@ -25,7 +25,7 @@ final class GetVacationAndHospitalDaysInfoAction
         }
 
         $startDate = Carbon::parse($user->getHireDate());
-        $fullWorkingYears = $startDate->diffInYears(Carbon::now());
+        $fullWorkingYears = (int) $startDate->diffInYears(Carbon::now(), absolute: true);
 
         if ($fullWorkingYears >= 1) {
             $startDate->addYears($fullWorkingYears);

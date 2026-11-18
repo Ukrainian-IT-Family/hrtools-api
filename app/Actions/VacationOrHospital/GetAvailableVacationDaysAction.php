@@ -18,13 +18,13 @@ final class GetAvailableVacationDaysAction
         $startDate = Carbon::parse($hireDate);
         $now = Carbon::now();
 
-        $fullWorkingYears = $startDate->diffInYears($now);
+        $fullWorkingYears = (int) $startDate->diffInYears($now, absolute: true);
 
         if ($fullWorkingYears >= 1) {
             $startDate = $startDate->addYears($fullWorkingYears);
         }
 
-        $numberOfMonthWorked = $startDate->diffInMonths($now);
+        $numberOfMonthWorked = (int) $startDate->diffInMonths($now, absolute: true);
         $vacationDaysUsed = $this->repository->getNumberVacationDaysUsed($userId, $startDate);
 
         return $numberOfMonthWorked * 2 - $vacationDaysUsed;
