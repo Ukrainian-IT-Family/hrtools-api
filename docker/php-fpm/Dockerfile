@@ -1,4 +1,4 @@
-FROM php:8.1.0-fpm
+FROM php:8.5.12-fpm
 
 # Fix debconf warnings upon build
 ARG DEBIAN_FRONTEND=noninteractive
@@ -14,19 +14,20 @@ RUN apt-get update \
     mailutils \
     apt-utils \
     libpq-dev \
-    libfreetype6-dev \
+    libfreetype-dev \
     libjpeg62-turbo-dev \
     libpng-dev \
+    libzip-dev \
     zip \
     unzip \
     && docker-php-ext-install pdo_mysql bcmath sockets zip \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd \
-    && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 RUN pecl channel-update pecl.php.net \
-    && pecl install redis-5.3.4 \
-    && pecl install xdebug-3.1.1 \
+    && pecl install redis-6.3.0 \
+    && pecl install xdebug-3.5.3 \
     && docker-php-ext-enable redis xdebug
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer

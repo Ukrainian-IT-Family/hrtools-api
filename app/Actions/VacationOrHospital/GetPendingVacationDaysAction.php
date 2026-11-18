@@ -18,7 +18,7 @@ final class GetPendingVacationDaysAction
         $startDate = Carbon::parse($hireDate);
         $now = Carbon::now();
 
-        $fullWorkingYears = $startDate->diffInYears($now);
+        $fullWorkingYears = (int) $startDate->diffInYears($now, absolute: true);
 
         if ($fullWorkingYears >= 1) {
             $startDate = $startDate->addYears($fullWorkingYears);
